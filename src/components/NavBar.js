@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
-import { logoutUser } from "../reducers/userReducer";
 import { notify } from "../reducers/notificationReducer";
-import MobileUserMenu from "./MobileUserMenu";
+import { logoutUser } from "../reducers/userReducer";
 import DesktopUserMenu from "./DesktopUserMenu";
+import MobileUserMenu from "./MobileUserMenu";
 import SearchBar from "./SearchBar";
 
 import {
   AppBar,
+  Button,
+  IconButton,
+  Link,
   Toolbar,
   Typography,
-  Link,
-  Button,
   useMediaQuery,
-  IconButton,
 } from "@material-ui/core";
-import { useNavStyles } from "../styles/muiStyles";
 import { useTheme } from "@material-ui/core/styles";
-import RedditIcon from "@material-ui/icons/Reddit";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import RedditIcon from "@material-ui/icons/Reddit";
 import SearchIcon from "@material-ui/icons/Search";
+import { useNavStyles } from "../styles/muiStyles";
 
 const NavBar = () => {
   const [searchOpen, setSearchOpen] = useState(false);

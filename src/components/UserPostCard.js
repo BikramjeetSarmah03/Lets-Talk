@@ -1,17 +1,17 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleUpvote, toggleDownvote } from "../reducers/userPageReducer";
-import { notify } from "../reducers/notificationReducer";
-import { UpvoteButton, DownvoteButton } from "./VoteButtons";
-import TimeAgo from "timeago-react";
-import ReactHtmlParser from "react-html-parser";
-import { trimLink, prettifyLink, fixUrl } from "../utils/formatUrl";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import CommentIcon from "@material-ui/icons/Comment";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+import React from "react";
+import ReactHtmlParser from "react-html-parser";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
+import TimeAgo from "timeago-react";
+import { notify } from "../reducers/notificationReducer";
+import { toggleDownvote, toggleUpvote } from "../reducers/userPageReducer";
+import { fixUrl, prettifyLink, trimLink } from "../utils/formatUrl";
 import getErrorMsg from "../utils/getErrorMsg";
+import { DownvoteButton, UpvoteButton } from "./VoteButtons";
 
-import { Paper, Typography, Link, Button } from "@material-ui/core";
+import { Button, Link, Paper, Typography } from "@material-ui/core";
 import { useUserPostCardStyles } from "../styles/muiStyles";
 
 const UserPostCard = ({ post, user, isMobile }) => {

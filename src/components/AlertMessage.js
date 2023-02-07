@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { Alert, AlertTitle } from '@material-ui/lab';
-import { useAlertStyles } from '../styles/muiStyles';
+import { Alert, AlertTitle } from "@material-ui/lab";
+import { useAlertStyles } from "../styles/muiStyles";
 
 const AlertMessage = ({ severity, error, clearError }) => {
   const classes = useAlertStyles();

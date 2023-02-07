@@ -14,7 +14,7 @@ import {
   ListItemIcon,
   Menu,
   MenuItem,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";

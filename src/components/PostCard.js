@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 import TimeAgo from "timeago-react";
 import { notify } from "../reducers/notificationReducer";
 import getEditedThumbail from "../utils/cloudinaryTransform";
-import { fixUrl, prettifyLink, trimLink } from "../utils/formatUrl";
+import { fixUrl } from "../utils/formatUrl";
 import getErrorMsg from "../utils/getErrorMsg";
 import EditDeleteMenu from "./EditDeleteMenu";
 import { DownvoteButton, UpvoteButton } from "./VoteButtons";
@@ -79,15 +79,6 @@ const PostCard = ({ post, toggleUpvote, toggleDownvote }) => {
       dispatch(notify(getErrorMsg(err), "error"));
     }
   };
-
-  const linkToShow =
-    postType === "Link"
-      ? linkSubmission
-      : postType === "Image"
-      ? imageSubmission.imageLink
-      : "";
-
-  const formattedLink = trimLink(prettifyLink(linkToShow), 30);
 
   return (
     <Paper className={classes.root} variant="outlined">

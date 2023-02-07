@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser, loadUserPosts } from "../reducers/userPageReducer";
+import { useParams } from "react-router-dom";
 import { notify } from "../reducers/notificationReducer";
+import { fetchUser, loadUserPosts } from "../reducers/userPageReducer";
 import { getCircularAvatar } from "../utils/cloudinaryTransform";
-import UserPostCard from "./UserPostCard";
-import ErrorPage from "./ErrorPage";
-import LoadMoreButton from "./LoadMoreButton";
-import LoadingSpinner from "./LoadingSpinner";
 import getErrorMsg from "../utils/getErrorMsg";
+import ErrorPage from "./ErrorPage";
+import LoadingSpinner from "./LoadingSpinner";
+import LoadMoreButton from "./LoadMoreButton";
+import UserPostCard from "./UserPostCard";
 
 import {
-  Container,
-  Paper,
-  useMediaQuery,
-  Typography,
-  Avatar,
+  Avatar, Container,
+  Paper, Typography, useMediaQuery
 } from "@material-ui/core";
-import { useUserPageStyles } from "../styles/muiStyles";
 import { useTheme } from "@material-ui/core/styles";
 import CakeIcon from "@material-ui/icons/Cake";
 import PersonIcon from "@material-ui/icons/Person";
+import { useUserPageStyles } from "../styles/muiStyles";
 
 const UserPage = () => {
   const classes = useUserPageStyles();

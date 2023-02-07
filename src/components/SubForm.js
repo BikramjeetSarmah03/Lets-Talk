@@ -1,18 +1,18 @@
+import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addNewSub } from '../reducers/subReducer';
-import { Formik, Form } from 'formik';
-import { TextInput } from './FormikMuiFields';
-import { notify } from '../reducers/notificationReducer';
-import AlertMessage from './AlertMessage';
 import * as yup from 'yup';
+import { notify } from '../reducers/notificationReducer';
+import { addNewSub } from '../reducers/subReducer';
 import getErrorMsg from '../utils/getErrorMsg';
+import AlertMessage from './AlertMessage';
+import { TextInput } from './FormikMuiFields';
 
-import { useSubredditFormStyles } from '../styles/muiStyles';
 import { Button, Typography } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
 import AddIcon from '@material-ui/icons/Add';
+import InfoIcon from '@material-ui/icons/Info';
+import { useSubredditFormStyles } from '../styles/muiStyles';
 
 const validationSchema = yup.object({
   subredditName: yup

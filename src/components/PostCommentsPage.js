@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link as RouterLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import ReactHtmlParser from "react-html-parser";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink, useParams } from "react-router-dom";
+import TimeAgo from "timeago-react";
+import { notify } from "../reducers/notificationReducer";
 import {
   fetchPostComments,
-  toggleUpvote,
   toggleDownvote,
-} from '../reducers/postCommentsReducer';
-import { notify } from '../reducers/notificationReducer';
-import CommentInput from './CommentInput';
-import { UpvoteButton, DownvoteButton } from './VoteButtons';
-import EditDeleteMenu from './EditDeleteMenu';
-import CommentsDisplay from './CommentsDisplay';
-import SortCommentsMenu from './SortCommentsMenu';
-import ErrorPage from './ErrorPage';
-import LoadingSpinner from './LoadingSpinner';
-import TimeAgo from 'timeago-react';
-import { trimLink, prettifyLink, fixUrl } from '../utils/formatUrl';
-import ReactHtmlParser from 'react-html-parser';
-import getErrorMsg from '../utils/getErrorMsg';
+  toggleUpvote,
+} from "../reducers/postCommentsReducer";
+import { fixUrl, prettifyLink, trimLink } from "../utils/formatUrl";
+import getErrorMsg from "../utils/getErrorMsg";
+import CommentInput from "./CommentInput";
+import CommentsDisplay from "./CommentsDisplay";
+import EditDeleteMenu from "./EditDeleteMenu";
+import ErrorPage from "./ErrorPage";
+import LoadingSpinner from "./LoadingSpinner";
+import SortCommentsMenu from "./SortCommentsMenu";
+import { DownvoteButton, UpvoteButton } from "./VoteButtons";
 
 import {
   Container,
-  Paper,
-  useMediaQuery,
-  Typography,
-  Link,
-  MenuItem,
-  ListItemIcon,
   Divider,
-} from '@material-ui/core';
-import { usePostCommentsStyles } from '../styles/muiStyles';
-import { useTheme } from '@material-ui/core/styles';
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
-import CommentIcon from '@material-ui/icons/Comment';
+  Link,
+  ListItemIcon,
+  MenuItem,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import CommentIcon from "@material-ui/icons/Comment";
+import OpenInNewIcon from "@material-ui/icons/OpenInNew";
+import { usePostCommentsStyles } from "../styles/muiStyles";
 
 const PostCommentsPage = () => {
   const { id: postId } = useParams();
@@ -57,7 +57,7 @@ const PostCommentsPage = () => {
 
   const classes = usePostCommentsStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
   if (pageError) {
     return (
@@ -73,7 +73,7 @@ const PostCommentsPage = () => {
     return (
       <Container disableGutters>
         <Paper variant="outlined" className={classes.mainPaper}>
-          <LoadingSpinner text={'Fetching post comments...'} />
+          <LoadingSpinner text={"Fetching post comments..."} />
         </Paper>
       </Container>
     );
@@ -111,7 +111,7 @@ const PostCommentsPage = () => {
         dispatch(toggleUpvote(id, updatedUpvotedBy, updatedDownvotedBy));
       }
     } catch (err) {
-      dispatch(notify(getErrorMsg(err), 'error'));
+      dispatch(notify(getErrorMsg(err), "error"));
     }
   };
 
@@ -126,12 +126,12 @@ const PostCommentsPage = () => {
         dispatch(toggleDownvote(id, updatedDownvotedBy, updatedUpvotedBy));
       }
     } catch (err) {
-      dispatch(notify(getErrorMsg(err), 'error'));
+      dispatch(notify(getErrorMsg(err), "error"));
     }
   };
 
   const formattedLink =
-    postType === 'Link' && trimLink(prettifyLink(linkSubmission), 70);
+    postType === "Link" && trimLink(prettifyLink(linkSubmission), 70);
 
   return (
     <Container disableGutters>
@@ -142,18 +142,18 @@ const PostCommentsPage = () => {
               user={user}
               body={post}
               handleUpvote={handleUpvoteToggle}
-              size={isMobile ? 'small' : 'medium'}
+              size={isMobile ? "small" : "medium"}
             />
             <Typography
               variant="body1"
               style={{
                 color: isUpvoted
-                  ? '#FF8b60'
+                  ? "#FF8b60"
                   : isDownvoted
-                  ? '#9494FF'
+                  ? "#9494FF"
                   : darkMode
-                  ? '#e4e4e4'
-                  : '#333',
+                  ? "#e4e4e4"
+                  : "#333",
                 fontWeight: 600,
               }}
             >
@@ -163,7 +163,7 @@ const PostCommentsPage = () => {
               user={user}
               body={post}
               handleDownvote={handleDownvoteToggle}
-              size={isMobile ? 'small' : 'medium'}
+              size={isMobile ? "small" : "medium"}
             />
           </div>
           <div className={classes.postDetails}>
@@ -179,7 +179,7 @@ const PostCommentsPage = () => {
                 • <TimeAgo datetime={new Date(createdAt)} />
                 {createdAt !== updatedAt && (
                   <em>
-                    {' • edited'} <TimeAgo datetime={new Date(updatedAt)} />
+                    {" • edited"} <TimeAgo datetime={new Date(updatedAt)} />
                   </em>
                 )}
               </Typography>
@@ -187,9 +187,9 @@ const PostCommentsPage = () => {
             <Typography variant="h5" className={classes.title}>
               {title}
             </Typography>
-            {postType === 'Text' ? (
+            {postType === "Text" ? (
               <div>{ReactHtmlParser(textSubmission)}</div>
-            ) : postType === 'Image' ? (
+            ) : postType === "Image" ? (
               <a
                 href={imageSubmission.imageLink}
                 alt={title}

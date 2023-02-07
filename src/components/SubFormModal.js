@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import SubForm from './SubForm';
+import React, { useState } from "react";
+import SubForm from "./SubForm";
 
-import { DialogTitle } from './CustomDialogTitle';
 import {
+  Button,
   Dialog,
   DialogContent,
-  Button,
-  MenuItem,
   ListItemIcon,
-} from '@material-ui/core';
-import { useDialogStyles } from '../styles/muiStyles';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+  MenuItem,
+} from "@material-ui/core";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { useDialogStyles } from "../styles/muiStyles";
+import { DialogTitle } from "./CustomDialogTitle";
 
 const SubFormModal = ({ type, handleCloseMenu }) => {
   const classes = useDialogStyles();
@@ -31,7 +31,7 @@ const SubFormModal = ({ type, handleCloseMenu }) => {
 
   return (
     <div>
-      {type !== 'menu' ? (
+      {type !== "menu" ? (
         <Button
           color="primary"
           variant="contained"

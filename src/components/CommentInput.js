@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addComment } from '../reducers/postCommentsReducer';
-import { notify } from '../reducers/notificationReducer';
-import getErrorMsg from '../utils/getErrorMsg';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
+import { notify } from "../reducers/notificationReducer";
+import { addComment } from "../reducers/postCommentsReducer";
+import getErrorMsg from "../utils/getErrorMsg";
 
-import { Link, Typography, TextField, Button } from '@material-ui/core';
-import { useCommentInputStyles } from '../styles/muiStyles';
-import SendIcon from '@material-ui/icons/Send';
+import { Button, Link, TextField, Typography } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
+import { useCommentInputStyles } from "../styles/muiStyles";
 
 const CommentInput = ({ user, postId, isMobile }) => {
   const classes = useCommentInputStyles();
   const dispatch = useDispatch();
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const handlePostComment = async (e) => {
@@ -21,11 +21,11 @@ const CommentInput = ({ user, postId, isMobile }) => {
       setSubmitting(true);
       await dispatch(addComment(postId, comment));
       setSubmitting(false);
-      setComment('');
-      dispatch(notify(`Comment submitted!`, 'success'));
+      setComment("");
+      dispatch(notify(`Comment submitted!`, "success"));
     } catch (err) {
       setSubmitting(false);
-      dispatch(notify(getErrorMsg(err), 'error'));
+      dispatch(notify(getErrorMsg(err), "error"));
     }
   };
 
@@ -33,7 +33,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
     <div className={classes.wrapper}>
       {user ? (
         <Typography variant="body2">
-          Comment as{' '}
+          Comment as{" "}
           <Link component={RouterLink} to={`/u/${user.username}`}>
             {user.username}
           </Link>
@@ -54,7 +54,7 @@ const CommentInput = ({ user, postId, isMobile }) => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           variant="outlined"
-          size={isMobile ? 'small' : 'medium'}
+          size={isMobile ? "small" : "medium"}
         />
         <Button
           type="submit"
@@ -62,10 +62,10 @@ const CommentInput = ({ user, postId, isMobile }) => {
           variant="contained"
           className={classes.commentBtn}
           startIcon={<SendIcon />}
-          size={isMobile ? 'small' : 'medium'}
+          size={isMobile ? "small" : "medium"}
           disabled={!user || submitting}
         >
-          {!user ? 'Login to comment' : submitting ? 'Commenting' : 'Comment'}
+          {!user ? "Login to comment" : submitting ? "Commenting" : "Comment"}
         </Button>
       </form>
     </div>
