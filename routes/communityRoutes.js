@@ -7,7 +7,7 @@ const {
   createNewSubreddit,
   editSubDescription,
   subscribeToSubreddit,
-} = require("../controllers/subreddit");
+} = require("../controllers/communityController");
 
 const router = express.Router();
 
