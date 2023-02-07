@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import AuthFormModal from "./AuthFormModal";
-import SubFormModal from "./SubFormModal";
-import UpdateAvatarModal from "./UpdateAvatarModal";
-import DarkModeMenuItem from "./DarkModeMenuItem";
 import { getCircularAvatar } from "../utils/cloudinaryTransform";
 import storageService from "../utils/localStorage";
+import AuthFormModal from "./AuthFormModal";
+import DarkModeMenuItem from "./DarkModeMenuItem";
+import SubFormModal from "./SubFormModal";
+import UpdateAvatarModal from "./UpdateAvatarModal";
 
 import {
+  Avatar,
   Button,
+  Divider,
+  ListItemIcon,
   Menu,
   MenuItem,
-  Avatar,
   Typography,
-  ListItemIcon,
-  Divider,
 } from "@material-ui/core";
-import { useUserMenuStyles } from "../styles/muiStyles";
-import FilterVintageIcon from "@material-ui/icons/FilterVintage";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
+import { useUserMenuStyles } from "../styles/muiStyles";
 
 const DesktopUserMenu = ({ user, handleLogout }) => {
   const classes = useUserMenuStyles();
