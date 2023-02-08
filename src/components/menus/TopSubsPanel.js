@@ -66,7 +66,7 @@ const TopSubsPanel = () => {
           Top Communities
         </Typography>
         {loadingSubs ? (
-          <LoadingSpinner text="Fetching subs data..." />
+          <LoadingSpinner text="Fetching community data..." />
         ) : (
           subs.topSubs.map((s, i) => (
             <div key={s.id} className={classes.listWrapper}>

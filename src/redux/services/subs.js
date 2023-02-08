@@ -2,7 +2,7 @@ import axios from "axios";
 import backendUrl from "utils/backendUrl";
 import { token } from "./auth";
 
-const baseUrl = `${backendUrl}/api/subreddits`;
+const baseUrl = `${backendUrl}/api/community`;
 
 const setConfig = () => {
   return {

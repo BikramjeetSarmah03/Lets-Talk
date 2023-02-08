@@ -596,7 +596,6 @@ export const useUserPostCardStyles = makeStyles(
     title: {
       fontWeight: 500,
       marginBottom: "0.7em",
-      color: "white",
     },
     imagePost: {
       textAlign: "center",

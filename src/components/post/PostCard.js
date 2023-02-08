@@ -146,7 +146,13 @@ const PostCard = ({ post, toggleUpvote, toggleDownvote }) => {
         )}
       </div>
       <div className={classes.postInfoWrapper}>
-        <RouterLink to={`/comments/${id}`} style={{ color: "white" }}>
+        <RouterLink
+          to={`/comments/${id}`}
+          style={{
+            color: theme.palette.type === "light" ? "#2f271f" : "#f7f5f3",
+            textDecoration: "none",
+          }}
+        >
           <Typography variant="h6" className={classes.title}>
             {title}
           </Typography>
