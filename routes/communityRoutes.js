@@ -12,9 +12,9 @@ const {
 const router = express.Router();
 
 router.get("/", getSubreddits);
+router.post("/", auth, createNewSubreddit);
 router.get("/c/:subredditName", getSubredditPosts);
 router.get("/top10", getTopSubreddits);
-router.post("/", auth, createNewSubreddit);
 router.patch("/:id", auth, editSubDescription);
 router.post("/:id/subscribe", auth, subscribeToSubreddit);
 
