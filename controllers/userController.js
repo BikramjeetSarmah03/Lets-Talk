@@ -39,15 +39,12 @@ const getUser = async (req, res) => {
 
 const setUserAvatar = async (req, res) => {
   const { avatarImage } = req.body;
-  console.log("Endpoint hit");
 
   if (!avatarImage) {
     return res
       .status(400)
       .send({ message: "Image URL needed for setting avatar." });
   }
-
-  console.log("Image Received: ", avatarImage);
 
   const user = await User.findById(req.user);
 
@@ -56,7 +53,6 @@ const setUserAvatar = async (req, res) => {
       .status(404)
       .send({ message: "User does not exist in database." });
   }
-  console.log(user);
 
   const uploadedImage = await cloudinary.uploader.upload(
     avatarImage,
@@ -67,8 +63,6 @@ const setUserAvatar = async (req, res) => {
       if (error) return res.status(401).send({ message: error.message });
     }
   );
-
-  console.log("Image uploaded");
 
   user.avatar = {
     exists: true,
