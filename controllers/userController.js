@@ -39,6 +39,7 @@ const getUser = async (req, res) => {
 
 const setUserAvatar = async (req, res) => {
   const { avatarImage } = req.body;
+  console.log("Endpoint hit");
 
   if (!avatarImage) {
     return res
